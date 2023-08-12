@@ -51,16 +51,17 @@ onAuthStateChanged(auth, async (user) => {
         <P>Adress : ${docSnap.data().adress}</P>
         <P>City : ${docSnap.data().city}.</P>
         <P>Province : ${docSnap.data().province}.</P>
-    </div>`
-
-
-
-
-  })
-  .catch((error) => {
-    // Handle any errors
-  });
+    </div>
+    `
     
+    
+    
+    
+})
+.catch((error) => {
+    // Handle any errors
+});
+
 });
 
 } else {
@@ -68,14 +69,18 @@ onAuthStateChanged(auth, async (user) => {
     console.log("No such document!");
 }
 
-
-
-
-
-
 } else {
-        // User is signed out
-        // ...
+    // User is signed out
+    let inner = document.getElementById('inner').innerHTML = 
+    `
+    <div  style="display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; height: 80vh; font-size: 21px;">
+    <a href="./shop.html" style='font-size: 20px; font-family: sans-serif;'>Shop Now</a>
+    </div>
+    `
+    // ...
     }
 });
 
