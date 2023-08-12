@@ -1,0 +1,42 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.main{
+    background-color: #dcdde1;
+}
+
+.container-fluid .row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.container-fluid .row .form-control:focus{
+    box-shadow: none;
+}
+
+.container-fluid .row .input-group{
+     width: 70%;
+}
+.container-fluid .row .btn{
+    width: 67%;
+}
+.container-fluid .row h1{
+    color: #079992;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container-fluid .row .input-group input{
+    border: 2px solid #079992;
+}
+
+
+
+
+
+
+
+

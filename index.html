@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <!-- navbar start -->
+    <div class="container-fluid bg-dark text-light sticky-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg bg-dark">
+                <div class="container-fluid">
+                    <h2>NextShop</h2>
+                    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarScroll">
+                        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll m-3"
+                            style="--bs-scroll-height: 100px;">
+                            <li class="nav-item one">
+                                <a class="nav-link active text-light text-center" aria-current="page" href="./index.html">Home</a>
+                            </li>
+                            <li class="nav-item two">
+                                <a class="nav-link active text-light text-center" aria-current="page"
+                                    href="./shop.html">ShopNow</a>
+                            </li>
+                        </ul>
+                        <form class="d-flex text-center" role="search">
+                            <div class="input">
+                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            </div>
+                            <a href="./history.html" style="cursor: pointer; width: 40px; height: 40px; margin-left: 10px; margin-right: 10px;">
+                                <i class="fa-solid fa-suitcase-rolling"></i>
+                            </a>
+                            <div id="mt">
+                                <a href="./login.html" id="logout">singIn</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- navbar end -->
+    
+    <!-- phela start -->
+    <div class="container-fluid fluid">
+        <div class="container phela">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                    <h1>Make your fashion more perfect</h1>
+                    <p>With our clothing collection, you can take your style to the next level.</p>
+                    <a href="./shop.html">
+                        <button id="shop-now">shop now</button>
+                    </a>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 mt-4">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                                class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                                aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                                aria-label="Slide 3"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp" class="d-block w-100"
+                                    alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp" class="d-block w-100"
+                                    alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp" class="d-block w-100"
+                                    alt="...">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- phela end -->
+
+    <!-- category start -->
+
+    <div class="container">
+        <div class="row">
+            <h1 class="img-h1">Shop by Category</h1>
+            <div class="img">
+                <div class="oneimg">
+                    <h1>T-shirt</h1>
+                </div>
+                <div class="secondimg">
+                   <h1>Hoodies</h1>
+                </div>
+                <div class="thirdimg">
+                  <h1>Jackets</h1>
+                </div>
+                <div class="fourthimg">
+                   <h1>Trousers</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- category end -->
+
+    <!-- new Arrivals start -->
+    <div class="container-fluid">
+        <div class="row">
+            <h1 class="arri">New Arrivals</h1>
+             <div class="arrivals" id="card-add-admin">
+                
+             </div>
+        </div>
+    </div>
+    <!-- new Arrivals end -->
+
+    <div class="container-fluid bg-dark">
+        <div class="container">
+        <div class="row">
+          <h5 class="text-light p-4">© 2023 NextShop. All rights reserved.</h5>
+        </div>
+    </div>
+    </div>
+
+    <script type="module" src="./index.js"></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

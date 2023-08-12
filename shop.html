@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="shop.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body class="color">
+    <!-- navbar start -->
+    <div class="container-fluid bg-dark text-light sticky-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg bg-dark">
+                <div class="container-fluid">
+                    <h2>NextShop</h2>
+                    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarScroll">
+                        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll m-3"
+                            style="--bs-scroll-height: 100px;">
+                            <li class="nav-item one">
+                                <a class="nav-link active text-light text-center" aria-current="page" href="./index.html">Home</a>
+                            </li>
+                            <li class="nav-item two">
+                                <a class="nav-link active text-light text-center" aria-current="page"
+                                    href="./shop.html">ShopNow</a>
+                            </li>
+                        </ul>
+                        <form class="d-flex text-center" role="search">
+                            <div class="input">
+                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            </div>
+                            <a href="./history.html" style="cursor: pointer; width: 40px; height: 40px; margin-left: 10px; margin-right: 10px;">
+                                <i class="fa-solid fa-suitcase-rolling"></i>
+                            </a>
+                            <div id="mt">
+                                <a href="./login.html" id="logout">singIn</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- navbar end -->
+
+
+    
+    <!-- new Arrivals start -->
+    <div class="container-fluid">
+        <div class="row">
+            <h1 class="arri">ShopNow</h1>
+             <div class="arrivals" id="card-add-admin">
+                
+             </div>
+        </div>
+    </div>
+    <!-- new Arrivals end -->
+
+    <div class="container-fluid bg-dark">
+        <div class="container">
+        <div class="row">
+          <h5 class="text-light p-4">© 2023 NextShop. All rights reserved.</h5>
+        </div>
+    </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="module" src="./shop.js"></script>
+</body>
+</html>
