@@ -105,17 +105,17 @@ onAuthStateChanged(auth, async (user) => {
                         <h5 class="fw-bold">Order summary</h5>
                         <div class="one1">
                             <p>Subtotal</p>
-                            <p>₹ ${number}</p>
+                            <p>₹ ${Math.ceil(number)}</p>
                         </div>
                         <hr>
                         <div class="one1">
                             <p>Tax(18%)</p>
-                            <p>₹ ${price}</p>
+                            <p>₹ ${Math.ceil(price)}</p>
                         </div>
                         <hr>
                         <div class="one1">
                             <p class='fw-bold'>order total</p>
-                            <p class='fw-bold'>₹ ${total}</p>
+                            <p class='fw-bold'>₹ ${Math.ceil(total)}</p>
                         </div>
                         <button onclick='place("${id}")'>Place Order</button>
                     </div> 
