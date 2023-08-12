@@ -37,39 +37,42 @@ onAuthStateChanged(auth, async (user) => {
         });
 
 
-        const q = query(collection(database, "Admin-card-Add"));
-
-        const querySnapshot = await getDocs(q);
-        querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data());
-
-            getDownloadURL(ref(storage, doc.id))
-                .then((url) => {
-                    console.log(url);
-                    let card_add_admin = document.getElementById('card-add-admin');
-                    card_add_admin.innerHTML += `
-      <div class="arrivals-one mt-3 mb-3" onclick='addToBag("${doc.id}")'>
-      <img src="${url}" alt="">
-      <p>Title: ${doc.data().title}</p>
-      <p>
-          <span>Ranking:<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
-      </p>
-      <p>Price: ₤${doc.data().price}</p>
-      <button onclick='addToBag("${doc.id}")'>Add to bag</button>
-  </div>
-      `
-                })
-                .catch((error) => {
-                    // Handle any errors
-                });
-
-        });
-
+        
     } else {
         // User is signed out
         // ...
     }
+});
+
+
+
+const q = query(collection(database, "Admin-card-Add"));
+
+// Handle any errors
+const querySnapshot = await getDocs(q);
+querySnapshot.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    console.log(doc.id, " => ", doc.data());
+
+    getDownloadURL(ref(storage, doc.id))
+        .then((url) => {
+            console.log(url);
+            let card_add_admin = document.getElementById('card-add-admin');
+            card_add_admin.innerHTML += `
+<div class="arrivals-one mt-3 mb-3" onclick='addToBag("${doc.id}")'>
+<img src="${url}" alt="">
+<p>Title: ${doc.data().title}</p>
+<p>
+  <span>Ranking:<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+</p>
+<p>Price: ₤${doc.data().price}</p>
+<button onclick='addToBag("${doc.id}")'>Add to bag</button>
+</div>
+`
+        })
+        .catch((error) => {
+});
+
 });
 
 
