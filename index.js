@@ -34,8 +34,7 @@ onAuthStateChanged(auth, async (user) => {
     </details>`
     });
   } else {
-    // User is signed out
-    // ...
+    
   }
 });
 

@@ -192,6 +192,22 @@ form a:hover{
         width: 100%;
     }
 }
+.collapse .two{
+  margin-left: 10px;
+  background-color: black;
+  color: #fff;
+  transition: 1s;
+}
+.collapse .two:hover{
+  background-color: #00000059;
+  color: #fff;
+}
+.collapse .one{
+  transition: 1s;
+}
+.collapse .one:hover{
+  background-color: #00000059;
+}
 /* navabr end */
 
 .container .form-control:focus{
