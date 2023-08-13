@@ -191,6 +191,21 @@ form a:hover{
         align-items: center;
         width: 100%;
     }
+    .collapse .two{
+        margin: 8px;
+    }
+    .collapse .one{
+        margin: 8px;
+    }
+    form .input {
+        margin: 8px;
+    }
+    form a{
+        margin: 8px;
+    }
+    form button{
+        margin: 8px;
+    }
 }
 
 .collapse .two{
