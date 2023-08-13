@@ -234,8 +234,6 @@ hr {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-left: 10%;
-  padding-right: 10%;
 }
 
 
@@ -246,7 +244,7 @@ hr {
   align-items: center;
   background-color: #fff;
   padding: 20px;
-  /* margin: 10px; */
+  width: 100%;
   border-radius: 12px;
 }
 .main .contain .row .img img{
@@ -325,7 +323,15 @@ hr {
   padding: 6px;
 }
 
+@media(max-width:800px){
+  .main .contain .row  .text{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+  }
 
+}
 
 
 
