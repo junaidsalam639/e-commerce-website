@@ -51,6 +51,7 @@ onAuthStateChanged(auth, async (user) => {
                                 <h6>${docSnap.data().title}</h6>
                                   <p>Quisque varius diam vel metus mattis, id aliquam diam rhoncus. Proin vitae magna in dui finibus malesuada et at</p>
                                       <select id='number-dd' name='number' onclick="select()">
+                                        <option value='0'>0</option>
                                         <option value='1'>1</option>
                                         <option value='2'>2</option>
                                         <option value='3'>3</option>
@@ -114,15 +115,15 @@ onAuthStateChanged(auth, async (user) => {
                          <h4>Order summary</h4>
                         <div class="total">
                           <p>Subtotal</p>
-                         <p>₹ ${Math.ceil(number)}</p>
+                         <p>₹ 0</p>
                             </div><hr/>
                             <div class="total">
                          <p>Tax(18%)</p>
-                        <p>₹ ${Math.ceil(price)}</p>
+                        <p>₹ 0</p>
                         </div><hr/>
                         <div class="total">
                         <p>Order total</p>
-                         <p>₹ ${Math.ceil(total)}</p>
+                         <p>₹ 0</p>
                         </div>
                         <button onclick='checkout("${localStorage.getItem('id')}")'>CheckOut</button>
                                                         `
@@ -139,37 +140,43 @@ onAuthStateChanged(auth, async (user) => {
                 // CheckOut
                 async function checkout(e) {
                     console.log(e);
-                    const docRef = doc(database, "Admin-card-Add", e);
-                    const docSnap = await getDoc(docRef);
-                
-                    if (docSnap.exists()) {
-                        console.log("Document data:", docSnap.data());
-                    } else {
-                        // docSnap.data() will be undefined in this case
-                        console.log("No such document!");
-                    }
                     let number_dd = document.getElementById('number-dd');
-                    console.log(number_dd.value);
-                    console.log(localStorage.getItem("number"));
-                    console.log(localStorage.getItem('price'));
-                    console.log(localStorage.getItem('total'));
-                    console.log(localStorage.getItem('quantity'));
-                    console.log(localStorage.getItem('quan'));
-                    localStorage.setItem('id' , e);
-                    console.log(localStorage.getItem('one-price'));
-                    setTimeout(() => {
+                    if(number_dd.value == '0'){
+                      alert('select your Quantity')
+                    }else{
+
+                        const docRef = doc(database, "Admin-card-Add", e);
+                        const docSnap = await getDoc(docRef);
+                        
+                        if (docSnap.exists()) {
+                            console.log("Document data:", docSnap.data());
+                        } else {
+                            // docSnap.data() will be undefined in this case
+                            console.log("No such document!");
+                        }
+                        let number_dd = document.getElementById('number-dd');
+                        console.log(number_dd.value);
+                        console.log(localStorage.getItem("number"));
+                        console.log(localStorage.getItem('price'));
+                        console.log(localStorage.getItem('total'));
+                        console.log(localStorage.getItem('quantity'));
+                        console.log(localStorage.getItem('quan'));
+                        localStorage.setItem('id' , e);
+                        console.log(localStorage.getItem('one-price'));
+                        setTimeout(() => {
                         location.href = './checkout.html'
                     }, 1500);
                 }
-                window.checkout = checkout
-
-
+            }
+            window.checkout = checkout
+                
+                
+            } else {
+                // docSnap.data() will be undefined in this case
+                console.log("No such document!");
+            }
+            
         } else {
-            // docSnap.data() will be undefined in this case
-            console.log("No such document!");
-        }
-
-    } else {
         // User is signed out
         // ...
     }
