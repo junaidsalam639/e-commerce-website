@@ -7,8 +7,8 @@ import { basedUrl } from "../../../utils/basedUrl";
 
 
 export default async function Category() {
-  const categories = await fetch(`${basedUrl}/categories`);
-  const data = await categories.json();
+  // const categories = await fetch(`${basedUrl}/categories`);
+  // const data = await categories.json();
   return (
     <>
       <SidebarWrapper>
@@ -19,7 +19,7 @@ export default async function Category() {
               <Button>Add Category</Button>
             </Link>
           </div>
-          <CategoryTable data={data} />
+          {/* <CategoryTable data={data} /> */}
         </div>
       </SidebarWrapper>
     </>
