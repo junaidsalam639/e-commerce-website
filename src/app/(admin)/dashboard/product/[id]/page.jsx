@@ -1,14 +1,16 @@
 import Link from "next/link";
 import { Button } from "../../../../../components/ui/button";
-import EditCategoryForm from "../../../../../components/admin/category/EditCategoryForm";
-import { basedUrl } from "../../../../../utils/basedUrl";
 import SidebarWrapper from "../../../../../components/SidebarWrapper";
+import EditProductForm from "../../../../../components/admin/product/EditProductForm";
+import { basedUrl } from "@/src/utils/basedUrl";
 
-export default async function EditCategory({ params: { id } }) {
-  const categories = await fetch(`${basedUrl}/categories/${id}`, {
-    method: 'GET',
-  });
+export default async function EditProduct({ params: { id } }) {
+  // const productRes = await fetch(`http://localhost:3000/api/products/${id}`);
+  // const product = await productRes.json();
+
+  const categories = await fetch(`${basedUrl}/categories`);
   const data = await categories.json();
+
   return (
     <>
       <SidebarWrapper>
@@ -20,7 +22,7 @@ export default async function EditCategory({ params: { id } }) {
             </Link>
           </div>
           <div className="max-w-md mx-auto">
-            <EditCategoryForm data={data} />
+            {/* <EditProductForm product={product} categories={data} /> */}
           </div>
         </div>
       </SidebarWrapper>
