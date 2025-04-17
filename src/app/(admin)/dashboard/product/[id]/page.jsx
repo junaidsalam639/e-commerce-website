@@ -4,7 +4,8 @@ import SidebarWrapper from "../../../../../components/SidebarWrapper";
 import EditProductForm from "../../../../../components/admin/product/EditProductForm";
 import { basedUrl } from "@/src/utils/basedUrl";
 
-export default async function EditProduct({ params: { id } }) {
+export default async function EditProduct({ params }) {
+  const { id } = params;
   // const productRes = await fetch(`http://localhost:3000/api/products/${id}`);
   // const product = await productRes.json();
 

@@ -8,7 +8,7 @@ import ProductTable from "../../../../components/admin/product/ProductTable";
 
 export default async function Product() {
   // const products = await fetch(`http://localhost:3000/api/products`);
-  const data = await products.json();
+  // const data = await products.json();
 
   return (
     <>
