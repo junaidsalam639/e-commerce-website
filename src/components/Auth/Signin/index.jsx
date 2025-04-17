@@ -9,6 +9,7 @@ import { Button } from "../../ui/button";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { basedUrl } from "@/src/utils/basedUrl";
 
 const Signin = () => {
   const router = useRouter();
@@ -28,7 +29,7 @@ const Signin = () => {
         const formData = new FormData();
         formData.append("email", values.email);
         formData.append("password", values.password);
-        const res = await fetch("http://localhost:3000/api/login", {
+        const res = await fetch(`${basedUrl}/login`, {
           method: "POST",
           body: formData,
         });

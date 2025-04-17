@@ -7,8 +7,8 @@ import ProductTable from "../../../../components/admin/product/ProductTable";
 
 
 export default async function Product() {
-  // const products = await fetch(`http://localhost:3000/api/products`);
-  // const data = await products.json();
+  const products = await fetch(`${basedUrl}/products`);
+  const data = await products.json();
 
   return (
     <>
@@ -20,7 +20,7 @@ export default async function Product() {
               <Button>Add Product</Button>
             </Link>
           </div>
-          {/* <ProductTable data={data} /> */}
+          <ProductTable data={data} />
         </div>
       </SidebarWrapper>
     </>

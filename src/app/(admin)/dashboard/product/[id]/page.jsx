@@ -6,8 +6,8 @@ import { basedUrl } from "@/src/utils/basedUrl";
 
 export default async function EditProduct({ params }) {
   const { id } = params;
-  // const productRes = await fetch(`http://localhost:3000/api/products/${id}`);
-  // const product = await productRes.json();
+  const productRes = await fetch(`${basedUrl}/products/${id}`);
+  const product = await productRes.json();
 
   const categories = await fetch(`${basedUrl}/categories`);
   const data = await categories.json();
@@ -23,7 +23,7 @@ export default async function EditProduct({ params }) {
             </Link>
           </div>
           <div className="max-w-md mx-auto">
-            {/* <EditProductForm product={product} categories={data} /> */}
+            <EditProductForm product={product} categories={data} />
           </div>
         </div>
       </SidebarWrapper>

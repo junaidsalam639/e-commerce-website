@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 import { Button } from "../../ui/button";
 import { useRouter } from "next/navigation";
+import { basedUrl } from "@/src/utils/basedUrl";
 
 const Signup = () => {
   const router = useRouter();
@@ -33,7 +34,7 @@ const Signup = () => {
         formData.append("email", values.email);
         formData.append("password", values.password);
         formData.append("phone", values.phone);
-        const res = await fetch("http://localhost:3000/api/signup", {
+        const res = await fetch(`${basedUrl}/signup`, {
           method: "POST",
           body: formData,
         });

@@ -9,13 +9,10 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 })
 
-export async function GET(request, { params }) {
+export async function GET(request, context) {
   try {
     await connectDB()
-    const product = await Product.findById(params.id).populate('category')
-    if (!product) {
-      return NextResponse.json({ error: 'Product not found' }, { status: 404 })
-    }
+    const product = await Product.findById(context?.params?.id).populate('category')
     return NextResponse.json(product)
   } catch (error) {
     return NextResponse.json(
