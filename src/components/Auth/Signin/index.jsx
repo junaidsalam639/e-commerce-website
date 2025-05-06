@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import Breadcrumb from "../../../components/Common/Breadcrumb";
 import { useFormik } from "formik";
@@ -9,11 +9,12 @@ import { Button } from "../../ui/button";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { basedUrl } from "@/src/utils/basedUrl";
+import { useSignInMutation } from "../../../service/auth/authApi";
 
 const Signin = () => {
+  const [login, { isLoading }] = useSignInMutation();
   const router = useRouter();
-  const [loading, setLoading] = useState(false);
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -24,32 +25,19 @@ const Signin = () => {
       password: Yup.string().required("Password is required"),
     }),
     onSubmit: async (values, { resetForm }) => {
-      setLoading(true);
       try {
         const formData = new FormData();
         formData.append("email", values.email);
         formData.append("password", values.password);
-        const res = await fetch(`${basedUrl}/login`, {
-          method: "POST",
-          body: formData,
-        });
-        const data = await res.json();
-        if (res?.ok) {
-          Cookies.set("token", data?.token, { expires: 7 });
-          Cookies.set("user", JSON.stringify(data?.user), { expires: 7 });
-          toast("Account SignIn successfully!");
-          resetForm();
-          setLoading(false);
-          router.push("/");
-          setLoading(false);
-        } else {
-          toast(data.error || "Something went wrong");
-          setLoading(false);
-        }
+        const response = await login(formData).unwrap();
+        Cookies.set("token", response?.token, { expires: 7 });
+        Cookies.set("user", JSON.stringify(response?.user), { expires: 7 });
+        toast.success(response?.message || "Account SignIn successfully!");
+        resetForm();
+        router.push("/");
       } catch (error) {
         console.error("Login error:", error);
         toast("Login failed. Please try again.");
-        setLoading(false);
       }
     },
   });
@@ -91,11 +79,11 @@ const Signin = () => {
               ))}
 
               <Button
-                disabled={loading}
+                disabled={isLoading}
                 type="submit"
                 className="w-full flex justify-center"
               >
-                {loading && <Loader2 className="h-4 w-4 animate-spin" />}
+                {isLoading && <Loader2 className="h-4 w-4 animate-spin" />}
                 Sign in to account
               </Button>
 

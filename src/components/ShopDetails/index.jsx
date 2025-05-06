@@ -1,13 +1,15 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Breadcrumb from "../Common/Breadcrumb";
 import Image from "next/image";
 import Newsletter from "../Common/Newsletter";
 import RecentlyViewdItems from "./RecentlyViewd";
 import { usePreviewSlider } from "../../app/context/PreviewSliderContext";
 import { useAppSelector } from "../../redux/store";
+import { useProductSingleQuery } from "../../service/product/productApi";
 
-const ShopDetails = () => {
+const ShopDetails = ({ id }) => {
+  const { data: products, isLoading } = useProductSingleQuery(id);
   const [activeColor, setActiveColor] = useState("blue");
   const { openPreviewModal } = usePreviewSlider();
   const [previewImg, setPreviewImg] = useState(0);
@@ -18,6 +20,8 @@ const ShopDetails = () => {
   const [quantity, setQuantity] = useState(1);
 
   const [activeTab, setActiveTab] = useState("tabOne");
+
+  console.log(products, 'products')
 
   const storages = [
     {

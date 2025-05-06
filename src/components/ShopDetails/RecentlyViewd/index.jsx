@@ -1,15 +1,16 @@
 "use client";
 import React from "react";
-import shopData from "../../../components/Shop/shopData";
 import ProductItem from "../../../components/Common/ProductItem";
 import Image from "next/image";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useCallback, useRef } from "react";
 import "swiper/css/navigation";
 import "swiper/css";
+import { useProductQuery } from "../../../service/product/productApi";
+import ProductItemSkeleton from "../../Common/ProductItemSkeleton"
 
 const RecentlyViewdItems = () => {
+  const { data: products, isLoading } = useProductQuery();
   const sliderRef = useRef(null);
 
   const handlePrev = useCallback(() => {
@@ -26,7 +27,6 @@ const RecentlyViewdItems = () => {
     <section className="overflow-hidden pt-17.5">
       <div className="max-w-[1170px] w-full mx-auto px-4 sm:px-8 xl:px-0 pb-15 border-b border-gray-3">
         <div className="swiper categories-carousel common-carousel">
-          {/* <!-- section title --> */}
           <div className="mb-10 flex items-center justify-between">
             <div>
               <span className="flex items-center gap-2.5 font-medium text-dark mb-1.5">
@@ -88,11 +88,15 @@ const RecentlyViewdItems = () => {
             spaceBetween={20}
             className="justify-between"
           >
-            {shopData.map((item, key) => (
-              <SwiperSlide key={key}>
-                <ProductItem item={item} />
-              </SwiperSlide>
-            ))}
+            <SwiperSlide key={key}>
+              {isLoading ? Array.from({ length: 6 }).map((_, index) => (
+                <ProductItemSkeleton key={index} />
+              ))
+                : products?.map((item, key) => (
+                  <ProductItem item={item} key={key} />
+                ))}
+              <ProductItem item={item} />
+            </SwiperSlide>
           </Swiper>
         </div>
       </div>

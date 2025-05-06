@@ -9,18 +9,31 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 })
 
-export async function GET(request, context) {
+
+export async function GET(request, { params }) {
   try {
-    await connectDB()
-    const product = await Product.findById(context?.params?.id).populate('category')
-    return NextResponse.json(product)
+    await connectDB();
+    const productId = await params?.id;
+
+    if (!productId) {
+      return NextResponse.json({ error: 'Product ID is required' }, { status: 400 });
+    }
+
+    const product = await Product.findById(productId).populate('category');
+
+    if (!product) {
+      return NextResponse.json({ error: 'Product not found' }, { status: 404 });
+    }
+
+    return NextResponse.json(product);
   } catch (error) {
     return NextResponse.json(
       { error: error.message || 'Server error' },
       { status: 500 }
-    )
+    );
   }
 }
+
 
 export async function PUT(request, { params }) {
   try {

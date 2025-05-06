@@ -1,18 +1,18 @@
 "use client";
 import Breadcrumb from "../../../components/Common/Breadcrumb";
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 import { Button } from "../../ui/button";
 import { useRouter } from "next/navigation";
-import { basedUrl } from "@/src/utils/basedUrl";
+import { useSignUpMutation } from "../../../service/auth/authApi";
 
 const Signup = () => {
+  const [signup, { isLoading }] = useSignUpMutation();
   const router = useRouter();
-  const [loading, setLoading] = useState(false);
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -27,32 +27,20 @@ const Signup = () => {
       phone: Yup.string().required("Phone is required"),
     }),
     onSubmit: async (values, { resetForm }) => {
-      setLoading(true);
       try {
         const formData = new FormData();
         formData.append("name", values.name);
         formData.append("email", values.email);
         formData.append("password", values.password);
         formData.append("phone", values.phone);
-        const res = await fetch(`${basedUrl}/signup`, {
-          method: "POST",
-          body: formData,
-        });
-
-        const data = await res.json();
-        if (res?.ok) {
-          toast("Account created successfully!");
-          resetForm();
-          router.push("/signin");
-          setLoading(false);
-        } else {
-          toast(data.error || "Something went wrong");
-          setLoading(false);
-        }
+        const response = await signup(formData).unwrap();
+        console.log(response, 'response');
+        toast.success(response?.message || "Account created successfully!");
+        resetForm();
+        router.push("/signin");
       } catch (error) {
         console.error("Error:", error);
-        toast("Server error");
-        setLoading(false);
+        toast.error("Server error");
       }
     },
   });
@@ -94,11 +82,11 @@ const Signup = () => {
               ))}
 
               <Button
-                disabled={loading}
+                disabled={isLoading}
                 type="submit"
                 className="w-full flex justify-center"
               >
-                {loading && <Loader2 className="h-4 w-4 animate-spin" />}
+                {isLoading && <Loader2 className="h-4 w-4 animate-spin" />}
                 Create Account
               </Button>
 
